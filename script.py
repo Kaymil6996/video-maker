@@ -35,12 +35,12 @@ def create_video(quote, background_video, output_file):
     text = TextClip(wrapped_quote, fontsize=fontsize, color='white', font='Arial').set_duration(text_duration).fadein(1)
 
     # Overlay the text on the video
-    result = CompositeVideoClip([video, text.set_position(("center", "center"))])
+    result = CompositeVideoClip([video, text.set_position(("center", video.h -400))])
 
     # Add logo and 'Check out bio' text
     logo = ImageClip('logo.png').set_duration(text_duration).resize(height=150).set_position(("center", video.h * 0.15)).fadein(1)
     logo_position = ("center", video.h - logo.h + 100)  # Calculate the position of the logo
-    check_bio = TextClip("Check out bio", fontsize=34, color="white", font="Arial").set_duration(text_duration).set_position(("center", logo_position[1] - 200)).fadein(1)
+    check_bio = TextClip("Check Out Bio", fontsize=34, color="white", font="Arial").set_duration(text_duration).set_position(("center", logo_position[1] - 200)).fadein(1)
 
     # Overlay the logo and 'Check out bio' text on the video
     result = CompositeVideoClip([result, logo, check_bio])
